@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Branded Salon</title>
+        <!-- Favicon -->
+<link rel="icon" href="salon-logo.jpeg" type="image/jpeg" sizes="1254x1254">
+
+    <!-- ========================================== -->
+    <!-- 1. HEADER KI CSS                           -->
+    <!-- ========================================== -->
+    <style>
+        /* Reset & Fonts (Header Ke Liye) */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Main Header Container */
+        .main-header {
+            background-color: #1a1a1a; /* Dark Charcoal Theme */
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Logo Styling */
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: #c5a059; /* Gold Theme */
+            text-decoration: none;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: #fff; /* "Salon" word in white */
+        }
+
+        /* Navigation Links */
+        .nav-links {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .nav-links li a {
+            color: #fff;
+            text-decoration: none;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            font-size: 1.05rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links li a:hover {
+            color: #c5a059;
+        }
+
+        /* Header Call to Action Button */
+        .header-cta {
+            background-color: #c5a059;
+            color: #fff;
+            padding: 10px 25px;
+            text-decoration: none;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            font-weight: 600;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+            border: 1px solid #c5a059;
+        }
+
+        .header-cta:hover {
+            background-color: transparent;
+            color: #c5a059;
+        }
+
+        /* Mobile Menu Toggle (Hamburger Icon) */
+        .mobile-menu-toggle {
+            display: none;
+            color: #fff;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 992px) {
+            .header-cta {
+                display: none; /* Hide CTA button on small screens to save space */
+            }
+            
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                display: none; /* Hide links by default on mobile */
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: #1a1a1a;
+                padding: 20px 0;
+                border-top: 1px solid #333;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            }
+
+            .nav-links.active {
+                display: flex; /* Show links when hamburger is clicked */
+            }
+
+            .nav-links li {
+                width: 100%;
+                text-align: center;
+                margin-bottom: 15px;
+            }
+
+            .nav-links li:last-child {
+                margin-bottom: 0;
+            }
+
+            /* Mobile specific Book Now link */
+            .nav-links li.mobile-cta a {
+                color: #c5a059;
+                font-weight: bold;
+            }
+        }
+    </style>
+
+    <!-- ========================================== -->
+    <!-- 2. ABOUT US PAGE KI CSS                    -->
+    <!-- ========================================== -->
+    <style>
+        /* Reset & Basic Typography */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Playfair Display', 'Segoe UI', serif; 
+        }
+        
+        body {
+            background-color: #faf9f7;
+            color: #333;
+            line-height: 1.7;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif; 
+            color: #1a1a1a;
+        }
+
+        .section-padding {
+            padding: 100px 10%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            color: #777;
+            margin-bottom: 60px;
+            font-size: 1.1rem;
+            font-style: italic;
+        }
+
+        .cta-btn {
+            padding: 15px 35px;
+            background-color: #c5a059; 
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+            display: inline-block;
+            border: 1px solid #c5a059;
+        }
+
+        .cta-btn:hover {
+            background-color: #1a1a1a;
+            border-color: #1a1a1a;
+            color: #c5a059;
+        }
+
+        /* 1. About Hero Section */
+        .about-hero {
+            position: relative;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            padding: 0 20px;
+            overflow: hidden;
+        }
+
+        .about-hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2;
+        }
+
+        .about-hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: -1;
+        }
+
+        .about-hero-content { z-index: 1; }
+        .about-hero-content h1 { font-size: 4rem; color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
+        .about-hero-content p { font-size: 1.2rem; font-weight: 300; letter-spacing: 1px; }
+
+        /* 2. Our Story Section */
+        .story-section {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            background-color: #fff;
+        }
+
+        .story-image { flex: 1; position: relative; }
+        .story-image img { 
+            width: 100%; 
+            border-radius: 5px; 
+            box-shadow: 20px 20px 0px #f0ece1;
+            object-fit: cover;
+        }
+
+        .story-text { flex: 1; }
+        .story-text h2 { font-size: 2.5rem; margin-bottom: 25px; }
+        .story-text p { color: #555; margin-bottom: 20px; font-size: 1.1rem; text-align: justify; }
+
+        /* 3. Mission & Vision Section */
+        .mission-section {
+            background-color: #1a1a1a;
+            color: #fff;
+            text-align: center;
+        }
+
+        .mission-section .section-title { color: #fff; }
+        .mission-section .section-subtitle { color: #c5a059; }
+
+        .mission-container {
+            display: flex;
+            gap: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .mission-box {
+            flex: 1;
+            background: #2a2a2a;
+            padding: 50px 30px;
+            border-radius: 8px;
+            border-bottom: 4px solid #c5a059;
+        }
+
+        .mission-box h3 { color: #c5a059; font-size: 1.8rem; margin-bottom: 20px; }
+        .mission-box p { color: #ddd; font-size: 1.05rem; }
+
+        /* 4. Core Values Section */
+        .values-section { background-color: #faf9f7; }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            text-align: center;
+        }
+
+        .value-card {
+            background: #fff;
+            padding: 40px 20px;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .value-card:hover { transform: translateY(-10px); }
+        .value-icon { font-size: 3rem; margin-bottom: 20px; color: #1a1a1a; }
+        .value-card h3 { font-size: 1.4rem; margin-bottom: 15px; }
+        .value-card p { color: #666; font-size: 1rem; }
+
+        /* 5. Salon Tour (Gallery) Section */
+        .gallery-section { background-color: #fff; }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .gallery-item {
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+            border-radius: 5px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img { transform: scale(1.1); }
+
+        /* 6. CTA Banner */
+        .about-cta {
+            background-color: #c5a059;
+            text-align: center;
+            padding: 80px 20px;
+            color: #fff;
+        }
+
+        .about-cta h2 { color: #fff; font-size: 2.5rem; margin-bottom: 20px; }
+        .about-cta p { font-size: 1.2rem; margin-bottom: 30px; max-width: 600px; margin-left: auto; margin-right: auto; }
+        .about-cta .cta-btn { background: #fff; color: #1a1a1a; border-color: #fff; }
+        .about-cta .cta-btn:hover { background: #1a1a1a; color: #fff; border-color: #1a1a1a; }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 900px) {
+            .story-section, .mission-container { flex-direction: column; }
+            .gallery-grid { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+            .about-hero-content h1 { font-size: 3rem; }
+        }
+    </style>
+
+    <!-- ========================================== -->
+    <!-- 3. FOOTER KI CSS                           -->
+    <!-- ========================================== -->
+    <style>
+        /* Reset & Fonts */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .main-footer {
+            background-color: #111; /* Thoda aur dark charcoal footer ke liye */
+            color: #ddd;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            padding: 70px 10% 20px; /* Top padding zyada, bottom kam */
+            border-top: 3px solid #c5a059; /* Gold border upar */
+        }
+
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            justify-content: space-between;
+            margin-bottom: 50px;
+        }
+
+        /* Columns Setup */
+        .footer-col {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        /* Logo & Brand Details */
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: #c5a059;
+            text-decoration: none;
+            font-weight: 700;
+            letter-spacing: 1px;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .footer-logo span {
+            color: #fff;
+        }
+
+        .footer-col p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #aaa;
+            margin-bottom: 20px;
+        }
+
+        /* Social Icons */
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            display: inline-block;
+            width: 35px;
+            height: 35px;
+            background-color: #222;
+            color: #c5a059;
+            text-align: center;
+            line-height: 35px;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background-color: #c5a059;
+            color: #fff;
+        }
+
+        /* Footer Headings */
+        .footer-col h4 {
+            color: #fff;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 8px;
+        }
+
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background-color: #c5a059;
+        }
+
+        /* Footer Links */
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links li a {
+            color: #aaa;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s ease, padding-left 0.3s ease;
+        }
+
+        .footer-links li a:hover {
+            color: #c5a059;
+            padding-left: 5px; /* Hover par link thoda aage shift hoga */
+        }
+
+        /* Footer Contact Info */
+        .footer-contact li {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            color: #aaa;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .footer-contact li span {
+            color: #c5a059;
+            font-size: 1.1rem;
+        }
+
+        /* Bottom Copyright Bar */
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            color: #777;
+            font-size: 0.9rem;
+        }
+
+        .footer-bottom a {
+            color: #c5a059;
+            text-decoration: none;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .footer-container {
+                flex-direction: column;
+                gap: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========================================== -->
+    <!-- 4. HEADER HTML                             -->
+    <!-- ========================================== -->
+    <header class="main-header">
+        <!-- Logo -->
+        <a href="index.html" class="logo">Branded<span>Salon</span></a>
+
+        <!-- Navigation Menu -->
+        <ul class="nav-links" id="navMenu">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="gallery.html">Lookbook</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="contact.html">Contact</a></li>                  
+        </ul>
+
+        <!-- Book Now Button (Visible on Desktop) -->
+        <a href="appointments.html" class="header-cta">Book Now</a>
+
+        <!-- Mobile Menu Icon (Hamburger) -->
+        <div class="mobile-menu-toggle" onclick="toggleMenu()">
+            ☰
+        </div>
+    </header>
+
+    <!-- JavaScript for Mobile Menu Toggle -->
+    <script>
+        function toggleMenu() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('active');
+        }
+    </script>
+
+
+    <!-- ========================================== -->
+    <!-- 5. ABOUT US PAGE HTML                      -->
+    <!-- ========================================== -->
+    <section class="about-hero">
+        <img src="https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?q=80&w=1920&auto=format&fit=crop" alt="Salon Tools and Beauty" class="about-hero-bg">
+        <div class="about-hero-overlay"></div>
+        <div class="about-hero-content">
+            <h1>Our Story</h1>
+            <p>Redefining Beauty, Luxury, and Elegance</p>
+        </div>
+    </section>
+
+    <section class="story-section section-padding">
+        <div class="story-image">
+            <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?q=80&w=1000&auto=format&fit=crop" alt="Salon Founder or Interior">
+        </div>
+        <div class="story-text">
+            <h2>A Passion for Perfection</h2>
+            <p>Founded with a simple yet powerful vision, <strong>Branded Salon</strong> started as a small dream to provide world-class beauty and grooming services. Today, we have grown into a luxury sanctuary where style meets relaxation.</p>
+            <p>Over the years, we have built a team of highly passionate and certified professionals who understand that beauty is personal. Whether it is a bespoke haircut, a rejuvenating spa therapy, or flawless bridal makeup, we dedicate ourselves to bringing out the absolute best in you.</p>
+            <p>We believe that when you look good, you feel good. And our ultimate goal is to make every client walk out of our doors feeling confident, refreshed, and empowered.</p>
+        </div>
+    </section>
+
+    <section class="mission-section section-padding">
+        <h2 class="section-title">Our Philosophy</h2>
+        <p class="section-subtitle">What drives us every single day</p>
+        
+        <div class="mission-container">
+            <div class="mission-box">
+                <h3>Our Mission</h3>
+                <p>To deliver an unparalleled salon experience by combining artistic excellence, premium products, and absolute client comfort. We strive to set new benchmarks in the beauty industry through continuous innovation and care.</p>
+            </div>
+            <div class="mission-box">
+                <h3>Our Vision</h3>
+                <p>To be the most trusted and luxurious beauty destination, recognized for our commitment to quality, creativity, and the genuine well-being of our clients. We aim to inspire confidence and celebrate individuality.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="values-section section-padding">
+        <h2 class="section-title">Why Choose Us?</h2>
+        <p class="section-subtitle">The pillars of our premium service</p>
+        
+        <div class="values-grid">
+            <div class="value-card">
+                <div class="value-icon">✨</div>
+                <h3>Premium Products</h3>
+                <p>We strictly use international, cruelty-free, and high-end brands to ensure the safety and health of your hair and skin.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">✂️</div>
+                <h3>Master Experts</h3>
+                <p>Our team consists of industry veterans and master stylists who undergo regular training for global beauty trends.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">🌿</div>
+                <h3>Ultimate Hygiene</h3>
+                <p>Your safety is our priority. We maintain strict sanitization protocols and use sterilized equipment for every single client.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">💖</div>
+                <h3>Client-Centric Care</h3>
+                <p>We listen to your needs, offer customized consultations, and ensure you receive a deeply personalized experience.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="gallery-section section-padding">
+        <h2 class="section-title">Step Into Luxury</h2>
+        <p class="section-subtitle">A glimpse of our aesthetic and relaxing environment</p>
+        
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?q=80&w=800&auto=format&fit=crop" alt="Salon Interior View 1">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1600948836101-f9ffda59d250?q=80&w=800&auto=format&fit=crop" alt="Salon Spa Room">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?q=80&w=1000&auto=format&fit=crop">
+            </div>
+        </div>
+    </section>
+
+    <section class="about-cta">
+        <h2>Ready to Experience the Best?</h2>
+        <p>Join the thousands of happy clients who trust Branded Salon for their grooming and beauty needs.</p>
+        <a href="appointments.html" class="cta-btn">Book Your Appointment Now</a>
+    </section>
+
+
+    <!-- ========================================== -->
+    <!-- 6. FOOTER HTML                             -->
+    <!-- ========================================== -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            
+            <!-- Column 1: Brand Info -->
+            <div class="footer-col">
+                <a href="index.html" class="footer-logo">Branded<span>Salon</span></a>
+                <p>Experience true beauty and luxury. We offer premium hair styling, flawless makeup, and relaxing spa treatments tailored just for you.</p>
+                
+                <div class="social-links">
+                    <a href="#" aria-label="Instagram">IG</a>
+                    <a href="#" aria-label="Facebook">FB</a>
+                    <a href="#" aria-label="Twitter">TW</a>
+                    <a href="#" aria-label="YouTube">YT</a>
+                </div>
+            </div>
+
+            <!-- Column 2: Quick Links -->
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html">Our Services</a></li>
+                    <li><a href="gallery.html">Portfolio & Gallery</a></li>
+                    <li><a href="pricing.html">Pricing Menu</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 3: Legal & Policies -->
+            <div class="footer-col">
+                <h4>Legal & Policies</h4>
+                <ul class="footer-links">
+                    <li><a href="booking-policy.html">Booking & Cancellation</a></li>
+                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    <li><a href="refund-policy.html">Refund & Return Policy</a></li>
+                    <li><a href="etiquette-health.html">Etiquette & Health</a></li>
+                    <li><a href="terms.html">Terms & Conditions</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 4: Contact Details -->
+            <div class="footer-col">
+                <h4>Get In Touch</h4>
+                <ul class="footer-contact footer-links">
+                    <li>
+                        <span>📍</span> 
+                        Premium Arcade, Civil Lines<br>Kanpur, UP 208001
+                    </li>
+                    <li>
+                        <span>📞</span> 
+                        <a href="tel:+919876543210">+91 98765 43210</a>
+                    </li>
+                    <li>
+                        <span>📧</span> 
+                        <a href="mailto:hello@brandedsalon.com">hello@brandedsalon.com</a>
+                    </li>
+                    <li>
+                        <span>🕒</span> 
+                        Mon - Sun: 10:00 AM - 9:00 PM
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- Bottom Copyright -->
+        <div class="footer-bottom">
+            <p>&copy; 2026 Branded Salon. All Rights Reserved. Designed & Developed by Novaplexes.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

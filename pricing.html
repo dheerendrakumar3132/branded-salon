@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Menu & Pricing - Branded Salon</title>
+        <!-- Favicon -->
+<link rel="icon" href="salon-logo.jpeg" type="image/jpeg" sizes="1254x1254">
+
+    <!-- ========================================== -->
+    <!-- 1. HEADER KI CSS                           -->
+    <!-- ========================================== -->
+    <style>
+        /* Reset & Fonts (Header Ke Liye) */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Main Header Container */
+        .main-header {
+            background-color: #1a1a1a; /* Dark Charcoal Theme */
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Logo Styling */
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: #c5a059; /* Gold Theme */
+            text-decoration: none;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: #fff; /* "Salon" word in white */
+        }
+
+        /* Navigation Links */
+        .nav-links {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .nav-links li a {
+            color: #fff;
+            text-decoration: none;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            font-size: 1.05rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links li a:hover {
+            color: #c5a059;
+        }
+
+        /* Header Call to Action Button */
+        .header-cta {
+            background-color: #c5a059;
+            color: #fff;
+            padding: 10px 25px;
+            text-decoration: none;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            font-weight: 600;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+            border: 1px solid #c5a059;
+        }
+
+        .header-cta:hover {
+            background-color: transparent;
+            color: #c5a059;
+        }
+
+        /* Mobile Menu Toggle (Hamburger Icon) */
+        .mobile-menu-toggle {
+            display: none;
+            color: #fff;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 992px) {
+            .header-cta {
+                display: none; /* Hide CTA button on small screens to save space */
+            }
+            
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                display: none; /* Hide links by default on mobile */
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: #1a1a1a;
+                padding: 20px 0;
+                border-top: 1px solid #333;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            }
+
+            .nav-links.active {
+                display: flex; /* Show links when hamburger is clicked */
+            }
+
+            .nav-links li {
+                width: 100%;
+                text-align: center;
+                margin-bottom: 15px;
+            }
+
+            .nav-links li:last-child {
+                margin-bottom: 0;
+            }
+
+            /* Mobile specific Book Now link */
+            .nav-links li.mobile-cta a {
+                color: #c5a059;
+                font-weight: bold;
+            }
+        }
+    </style>
+
+    <!-- ========================================== -->
+    <!-- 2. PRICING PAGE KI CSS                     -->
+    <!-- ========================================== -->
+    <style>
+        /* Reset & Basic Typography */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Playfair Display', 'Segoe UI', serif; 
+        }
+        
+        body {
+            background-color: #faf9f7;
+            color: #333;
+            line-height: 1.7;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif; 
+            color: #1a1a1a;
+        }
+
+        .section-padding {
+            padding: 100px 10%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            color: #777;
+            margin-bottom: 60px;
+            font-size: 1.1rem;
+            font-style: italic;
+        }
+
+        .cta-btn {
+            padding: 15px 35px;
+            background-color: #c5a059; 
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+            display: inline-block;
+            border: 1px solid #c5a059;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .cta-btn:hover {
+            background-color: #1a1a1a;
+            border-color: #1a1a1a;
+            color: #c5a059;
+        }
+
+        /* 1. Pricing Hero Section */
+        .pricing-hero {
+            position: relative;
+            height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            padding: 0 20px;
+            overflow: hidden;
+        }
+
+        .pricing-hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2;
+        }
+
+        .pricing-hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            z-index: -1;
+        }
+
+        .pricing-hero-content { z-index: 1; }
+        .pricing-hero-content h1 { font-size: 4rem; color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
+        .pricing-hero-content p { font-size: 1.2rem; font-weight: 300; letter-spacing: 1px; }
+
+        /* 2. Menu Layout Grid */
+        .menu-wrapper {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 50px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .menu-category {
+            background: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border-top: 4px solid #c5a059;
+        }
+
+        .menu-category h3 {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            color: #1a1a1a;
+            border-bottom: 1px dashed #ddd;
+            padding-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 20px;
+        }
+
+        .menu-item-details {
+            flex: 1;
+            padding-right: 20px;
+        }
+
+        .menu-item-name {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: #333;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+        }
+
+        .menu-item-desc {
+            font-size: 0.9rem;
+            color: #777;
+            margin-top: 3px;
+            display: block;
+        }
+
+        .menu-item-price {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #c5a059;
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* 3. Packages / Membership Section */
+        .packages-section {
+            background-color: #1a1a1a;
+            color: #fff;
+        }
+        
+        .packages-section .section-title, .packages-section .section-subtitle {
+            color: #fff;
+        }
+
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .package-card {
+            background: #2a2a2a;
+            padding: 40px 30px;
+            text-align: center;
+            border-radius: 8px;
+            border: 1px solid #333;
+            transition: transform 0.3s;
+        }
+
+        .package-card:hover {
+            transform: translateY(-10px);
+            border-color: #c5a059;
+        }
+
+        .package-card h4 {
+            color: #c5a059;
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+        }
+
+        .package-price {
+            font-size: 2.5rem;
+            color: #fff;
+            margin-bottom: 20px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .package-price span {
+            font-size: 1rem;
+            color: #999;
+        }
+
+        .package-list {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .package-list li {
+            color: #ccc;
+            margin-bottom: 10px;
+            font-size: 1rem;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+        }
+
+        /* 4. Insta Note & Custom Inquiry */
+        .info-banner-section {
+            background-color: #fff;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .info-half {
+            flex: 1;
+            min-width: 300px;
+            padding: 80px 10%;
+            text-align: center;
+        }
+
+        .info-left {
+            background-color: #faf9f7;
+            border-right: 1px solid #eee;
+        }
+
+        .info-half h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #1a1a1a;
+        }
+
+        .info-half p {
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        .info-half a {
+            color: #c5a059;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .pricing-hero-content h1 { font-size: 3rem; }
+            .menu-wrapper { grid-template-columns: 1fr; }
+            .info-left { border-right: none; border-bottom: 1px solid #eee; }
+        }
+    </style>
+
+    <!-- ========================================== -->
+    <!-- 3. FOOTER KI CSS                           -->
+    <!-- ========================================== -->
+    <style>
+        .main-footer {
+            background-color: #111;
+            color: #ddd;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            padding: 70px 10% 20px;
+            border-top: 3px solid #c5a059;
+        }
+
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            justify-content: space-between;
+            margin-bottom: 50px;
+        }
+
+        .footer-col { flex: 1; min-width: 200px; }
+
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: #c5a059;
+            text-decoration: none;
+            font-weight: 700;
+            letter-spacing: 1px;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .footer-logo span { color: #fff; }
+
+        .footer-col p { font-size: 0.95rem; line-height: 1.6; color: #aaa; margin-bottom: 20px; }
+
+        .social-links { display: flex; gap: 15px; }
+
+        .social-links a {
+            display: inline-block;
+            width: 35px;
+            height: 35px;
+            background-color: #222;
+            color: #c5a059;
+            text-align: center;
+            line-height: 35px;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover { background-color: #c5a059; color: #fff; }
+
+        .footer-col h4 {
+            color: #fff;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 8px;
+        }
+
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background-color: #c5a059;
+        }
+
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links li a {
+            color: #aaa;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s ease, padding-left 0.3s ease;
+        }
+        .footer-links li a:hover { color: #c5a059; padding-left: 5px; }
+
+        .footer-contact li { display: flex; gap: 10px; margin-bottom: 15px; color: #aaa; font-size: 0.95rem; line-height: 1.5; }
+        .footer-contact li span { color: #c5a059; font-size: 1.1rem; }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            color: #777;
+            font-size: 0.9rem;
+        }
+
+        .footer-bottom a { color: #c5a059; text-decoration: none; }
+
+        @media (max-width: 768px) {
+            .footer-container { flex-direction: column; gap: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========================================== -->
+    <!-- 4. HEADER HTML                             -->
+    <!-- ========================================== -->
+    <header class="main-header">
+        <a href="index.html" class="logo">Branded<span>Salon</span></a>
+        <ul class="nav-links" id="navMenu">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="gallery.html">Lookbook</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <a href="appointments.html" class="header-cta">Book Now</a>
+        <div class="mobile-menu-toggle" onclick="toggleMenu()">☰</div>
+    </header>
+
+    <script>
+        function toggleMenu() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('active');
+        }
+    </script>
+
+
+    <!-- ========================================== -->
+    <!-- 5. PRICING PAGE HTML                       -->
+    <!-- ========================================== -->
+    <section class="pricing-hero">
+        <img src="https://images.unsplash.com/photo-1521590832167-7bfc17484d20?q=80&w=1920&auto=format&fit=crop" alt="Premium Salon Pricing" class="pricing-hero-bg">
+        <div class="pricing-hero-overlay"></div>
+        <div class="pricing-hero-content">
+            <h1>Service Menu</h1>
+            <p>Transparent pricing for unparalleled luxury and care.</p>
+        </div>
+    </section>
+
+    <section class="section-padding">
+        <h2 class="section-title">Our Offerings</h2>
+        <p class="section-subtitle">Prices may vary slightly based on hair length and consultant level.</p>
+        
+        <div class="menu-wrapper">
+            
+            <div class="menu-category">
+                <h3>✂️ Hair Styling & Care</h3>
+                
+                <div class="menu-item">
+                    <div class="menu-item-details">
+                        <span class="menu-item-name">Signature Haircut (Women)</span>
+                        <span class="menu-item-desc">Includes wash, deep conditioning, and blowdry.</span>
+                    </div>
+                    <span class="menu-item-price">₹1,200</span>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="menu-item-details">
+                        <span class="menu-item-name">Classic Haircut (Men)</span>
+                        <span class="menu-item-desc">Precision cutting and styling.</span>
+                    </div>
+                    <span class="menu-item-price">₹600</span>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-item-details">
+                        <span class="menu-item-name">Global Hair Color</span>
+                        <span class="menu-item-desc">L'Oréal Professionnel full coverage.</span>
+                    </div>
+                    <span class="menu-item-price">₹4,500+</span>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-item-details">
+                        <span class="menu-item-name">Keratin / Smoothening</span>
+                        <span class="menu-item-desc">Frizz-free, glossy finish lasting up to 5 months.</span>
+                    </div>
+                    <span class="menu-item-price">₹6,000+</span>
+                </div>
+            </div>
+
+            <div class="menu-category">
+                <h3>💆‍♀️ Skincare & Spa</h3>
+                
+                <div class="menu-item">
+                    <div class="menu-item-details">
+                        <span class="menu-item-name">HydraGlow Facial</span>
+                        <span class="menu-item-desc">Deep pore cleansing with hyaluronic acid infusion.</span>
+                    </div>
+                    <span class="menu-item-price">₹2,500</span>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="menu-item-details">
+                        <span class="menu-item-name">O3+ Bridal Radiance</span>
+                        <span class="menu-item-desc">Skin brightening facial for instant glow.</span>
+                    </div>
+                    <span class="menu-item-price">₹3,200</span>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-item-details">
+                        <span class="menu-item-name">Swedish Full Body Spa</span>
+                        <span class="menu-item-desc">60 mins relaxing therapy with essential oils.</span>
+                    </div>
+                    <span class="menu-item-price">₹3,000</span>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-item-details">
+                        <span class="menu-item-name">Deep Tissue Massage</span>
+                        <span class="menu-item-desc">90 mins intense muscle tension relief.</span>
+                    </div>
+                    <span class="menu-item-price">₹4,500</span>
+                </div>
+            </div>
+
+            <div class="menu-category">
+                <h3>💄 Bridal & Makeup</h3>
+                
+                <div class="menu-item">
+                    <div class="menu-item-details">
+                        <span class="menu-item-name">HD Bridal Makeup</span>
+                        <span class="menu-item-desc">Includes MAC/Huda Beauty products, hair, & draping.</span>
+                    </div>
+                    <span class="menu-item-price">₹15,000</span>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="menu-item-details">
+                        <span class="menu-item-name">Airbrush Bridal Makeup</span>
+                        <span class="menu-item-desc">Flawless, waterproof finish lasting 24 hours.</span>
+                    </div>
+                    <span class="menu-item-price">₹20,000</span>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-item-details">
+                        <span class="menu-item-name">Party / Guest Makeup</span>
+                        <span class="menu-item-desc">Light makeup with basic hairstyling.</span>
+                    </div>
+                    <span class="menu-item-price">₹3,500</span>
+                </div>
+            </div>
+
+            <div class="menu-category">
+                <h3>💅 Nail Bar & Essentials</h3>
+                
+                <div class="menu-item">
+                    <div class="menu-item-details">
+                        <span class="menu-item-name">Luxury Spa Pedicure</span>
+                        <span class="menu-item-desc">Dead sea salt soak, scrub, and massage.</span>
+                    </div>
+                    <span class="menu-item-price">₹1,200</span>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="menu-item-details">
+                        <span class="menu-item-name">Gel Extensions</span>
+                        <span class="menu-item-desc">Premium nail extensions with solid gel color.</span>
+                    </div>
+                    <span class="menu-item-price">₹2,500</span>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-item-details">
+                        <span class="menu-item-name">Nail Art (Per Nail)</span>
+                        <span class="menu-item-desc">Chrome, ombre, or custom hand-painted designs.</span>
+                    </div>
+                    <span class="menu-item-price">₹200+</span>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <section class="packages-section section-padding">
+        <h2 class="section-title">Signature Packages</h2>
+        <p class="section-subtitle">Curated experiences offering the best value</p>
+        
+        <div class="packages-grid">
+            <div class="package-card">
+                <h4>Glow & Go</h4>
+                <div class="package-price">₹3,999 <span>/ session</span></div>
+                <ul class="package-list">
+                    <li>Classic Haircut & Blowdry</li>
+                    <li>Hydrating Fruit Facial</li>
+                    <li>Basic Manicure</li>
+                    <li>Refreshing Head Massage</li>
+                </ul>
+                <a href="appointments.html" class="cta-btn" style="width: 100%; background: transparent; color: #c5a059;">Book Package</a>
+            </div>
+
+            <div class="package-card" style="border-color: #c5a059; position: relative;">
+                <div style="position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: #c5a059; color: #fff; padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; letter-spacing: 1px;">MOST POPULAR</div>
+                <h4>Ultimate Makeover</h4>
+                <div class="package-price">₹8,499 <span>/ session</span></div>
+                <ul class="package-list">
+                    <li>Advanced Hair Coloring / Balayage</li>
+                    <li>Olaplex Treatment</li>
+                    <li>O3+ Radiance Facial</li>
+                    <li>Luxury Spa Pedicure</li>
+                </ul>
+                <a href="appointments.html" class="cta-btn" style="width: 100%;">Book Package</a>
+            </div>
+
+            <div class="package-card">
+                <h4>Pre-Bridal Ritual</h4>
+                <div class="package-price">₹12,000 <span>/ bundle</span></div>
+                <ul class="package-list">
+                    <li>Full Body Polishing</li>
+                    <li>Advanced Skin Treatment</li>
+                    <li>Hair Spa & Trimming</li>
+                    <li>Gel Manicure & Pedicure</li>
+                </ul>
+                <a href="appointments.html" class="cta-btn" style="width: 100%; background: transparent; color: #c5a059;">Book Package</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="info-banner-section">
+        <div class="info-half info-left">
+            <h3>Looking for More?</h3>
+            <p>This menu highlights our most popular treatments. For a comprehensive look at everything we do, check out the link in our Instagram bio, where we list all our professional services and seasonal offers!</p>
+            <a href="https://instagram.com/yourbrandedsalon" target="_blank">View Full Menu on Instagram &rarr;</a>
+        </div>
+
+        <div class="info-half">
+            <h3>Custom Bookings</h3>
+            <p>Planning a bridal party, a corporate wellness day, or need a customized package? Reach out directly to our management team via our official business email for personalized quotes.</p>
+            <a href="mailto:management@brandedsalon.com">management@brandedsalon.com &rarr;</a>
+        </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 6. FOOTER HTML                             -->
+    <!-- ========================================== -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <a href="index.html" class="footer-logo">Branded<span>Salon</span></a>
+                <p>Experience true beauty and luxury. We offer premium hair styling, flawless makeup, and relaxing spa treatments tailored just for you.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Instagram">IG</a>
+                    <a href="#" aria-label="Facebook">FB</a>
+                    <a href="#" aria-label="Twitter">TW</a>
+                    <a href="#" aria-label="YouTube">YT</a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html">Our Services</a></li>
+                    <li><a href="gallery.html">Portfolio & Gallery</a></li>
+                    <li><a href="pricing.html">Pricing Menu</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Legal & Policies</h4>
+                <ul class="footer-links">
+                    <li><a href="booking-policy.html">Booking & Cancellation</a></li>
+                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    <li><a href="refund-policy.html">Refund & Return Policy</a></li>
+                    <li><a href="etiquette-health.html">Etiquette & Health</a></li>
+                    <li><a href="terms.html">Terms & Conditions</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Get In Touch</h4>
+                <ul class="footer-contact footer-links">
+                    <li><span>📍</span> Premium Arcade, Civil Lines<br>Kanpur, Uttar Pradesh 208001</li>
+                    <li><span>📞</span> <a href="tel:+919876543210">+91 98765 43210</a></li>
+                    <li><span>📧</span> <a href="mailto:hello@brandedsalon.com">hello@brandedsalon.com</a></li>
+                    <li><span>🕒</span> Mon - Sun: 10:00 AM - 9:00 PM</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Branded Salon. All Rights Reserved. Designed & Developed by Novaplexes.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

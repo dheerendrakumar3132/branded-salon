@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services - Branded Salon</title>
+        <!-- Favicon -->
+<link rel="icon" href="salon-logo.jpeg" type="image/jpeg" sizes="1254x1254">
+
+    <!-- ========================================== -->
+    <!-- 1. HEADER KI CSS                           -->
+    <!-- ========================================== -->
+    <style>
+        /* Reset & Fonts (Header Ke Liye) */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Main Header Container */
+        .main-header {
+            background-color: #1a1a1a; /* Dark Charcoal Theme */
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Logo Styling */
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: #c5a059; /* Gold Theme */
+            text-decoration: none;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: #fff; /* "Salon" word in white */
+        }
+
+        /* Navigation Links */
+        .nav-links {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .nav-links li a {
+            color: #fff;
+            text-decoration: none;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            font-size: 1.05rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links li a:hover {
+            color: #c5a059;
+        }
+
+        /* Header Call to Action Button */
+        .header-cta {
+            background-color: #c5a059;
+            color: #fff;
+            padding: 10px 25px;
+            text-decoration: none;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            font-weight: 600;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+            border: 1px solid #c5a059;
+        }
+
+        .header-cta:hover {
+            background-color: transparent;
+            color: #c5a059;
+        }
+
+        /* Mobile Menu Toggle (Hamburger Icon) */
+        .mobile-menu-toggle {
+            display: none;
+            color: #fff;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 992px) {
+            .header-cta {
+                display: none; /* Hide CTA button on small screens to save space */
+            }
+            
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                display: none; /* Hide links by default on mobile */
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: #1a1a1a;
+                padding: 20px 0;
+                border-top: 1px solid #333;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            }
+
+            .nav-links.active {
+                display: flex; /* Show links when hamburger is clicked */
+            }
+
+            .nav-links li {
+                width: 100%;
+                text-align: center;
+                margin-bottom: 15px;
+            }
+
+            .nav-links li:last-child {
+                margin-bottom: 0;
+            }
+
+            /* Mobile specific Book Now link */
+            .nav-links li.mobile-cta a {
+                color: #c5a059;
+                font-weight: bold;
+            }
+        }
+    </style>
+
+    <!-- ========================================== -->
+    <!-- 2. SERVICES PAGE KI CSS                    -->
+    <!-- ========================================== -->
+    <style>
+        /* Reset & Basic Typography */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Playfair Display', 'Segoe UI', serif; 
+        }
+        
+        body {
+            background-color: #faf9f7;
+            color: #333;
+            line-height: 1.7;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif; 
+            color: #1a1a1a;
+        }
+
+        .section-padding {
+            padding: 100px 10%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            color: #777;
+            margin-bottom: 60px;
+            font-size: 1.1rem;
+            font-style: italic;
+        }
+
+        .cta-btn {
+            padding: 15px 35px;
+            background-color: #c5a059; 
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+            display: inline-block;
+            border: 1px solid #c5a059;
+            cursor: pointer;
+        }
+
+        .cta-btn:hover {
+            background-color: #1a1a1a;
+            border-color: #1a1a1a;
+            color: #c5a059;
+        }
+
+        /* 1. Services Hero Section */
+        .services-hero {
+            position: relative;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            padding: 0 20px;
+            overflow: hidden;
+        }
+
+        .services-hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2;
+        }
+
+        .services-hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: -1;
+        }
+
+        .services-hero-content { z-index: 1; }
+        .services-hero-content h1 { font-size: 4rem; color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
+        .services-hero-content p { font-size: 1.2rem; font-weight: 300; letter-spacing: 1px; max-width: 600px; margin: 0 auto; }
+
+        /* 2. Detailed Service Rows (Alternating Layout) */
+        .service-row {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            margin-bottom: 100px;
+        }
+
+        .service-row.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .service-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .service-image {
+            flex: 1;
+            position: relative;
+        }
+
+        .service-image img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .service-content {
+            flex: 1;
+        }
+
+        .service-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #1a1a1a;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .service-content h2::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 60px;
+            height: 3px;
+            background-color: #c5a059;
+        }
+
+        .service-content > p {
+            color: #555;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+
+        .sub-services-list {
+            list-style: none;
+        }
+
+        .sub-services-list li {
+            margin-bottom: 20px;
+        }
+
+        .sub-services-list h4 {
+            font-size: 1.2rem;
+            color: #1a1a1a;
+            margin-bottom: 5px;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+        }
+
+        .sub-services-list p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* 3. CTA Section at bottom */
+        .services-cta {
+            background-color: #1a1a1a;
+            text-align: center;
+            padding: 80px 20px;
+            color: #fff;
+        }
+
+        .services-cta h2 { color: #fff; font-size: 2.5rem; margin-bottom: 20px; }
+        .services-cta p { font-size: 1.1rem; margin-bottom: 30px; color: #ddd; max-width: 600px; margin-left: auto; margin-right: auto; }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 900px) {
+            .service-row, .service-row.reverse {
+                flex-direction: column;
+                gap: 40px;
+                margin-bottom: 80px;
+            }
+            .service-image img {
+                height: 350px;
+            }
+            .services-hero-content h1 { font-size: 3rem; }
+        }
+    </style>
+
+    <!-- ========================================== -->
+    <!-- 3. FOOTER KI CSS                           -->
+    <!-- ========================================== -->
+    <style>
+        .main-footer {
+            background-color: #111;
+            color: #ddd;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            padding: 70px 10% 20px;
+            border-top: 3px solid #c5a059;
+        }
+
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            justify-content: space-between;
+            margin-bottom: 50px;
+        }
+
+        .footer-col { flex: 1; min-width: 200px; }
+
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: #c5a059;
+            text-decoration: none;
+            font-weight: 700;
+            letter-spacing: 1px;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .footer-logo span { color: #fff; }
+
+        .footer-col p { font-size: 0.95rem; line-height: 1.6; color: #aaa; margin-bottom: 20px; }
+
+        .social-links { display: flex; gap: 15px; }
+
+        .social-links a {
+            display: inline-block;
+            width: 35px;
+            height: 35px;
+            background-color: #222;
+            color: #c5a059;
+            text-align: center;
+            line-height: 35px;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover { background-color: #c5a059; color: #fff; }
+
+        .footer-col h4 {
+            color: #fff;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 8px;
+        }
+
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background-color: #c5a059;
+        }
+
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links li a {
+            color: #aaa;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s ease, padding-left 0.3s ease;
+        }
+        .footer-links li a:hover { color: #c5a059; padding-left: 5px; }
+
+        .footer-contact li { display: flex; gap: 10px; margin-bottom: 15px; color: #aaa; font-size: 0.95rem; line-height: 1.5; }
+        .footer-contact li span { color: #c5a059; font-size: 1.1rem; }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            color: #777;
+            font-size: 0.9rem;
+        }
+
+        .footer-bottom a { color: #c5a059; text-decoration: none; }
+
+        @media (max-width: 768px) {
+            .footer-container { flex-direction: column; gap: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========================================== -->
+    <!-- 4. HEADER HTML                             -->
+    <!-- ========================================== -->
+    <header class="main-header">
+        <a href="index.html" class="logo">Branded<span>Salon</span></a>
+        <ul class="nav-links" id="navMenu">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="gallery.html">Lookbook</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <a href="appointments.html" class="header-cta">Book Now</a>
+        <div class="mobile-menu-toggle" onclick="toggleMenu()">☰</div>
+    </header>
+
+    <script>
+        function toggleMenu() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('active');
+        }
+    </script>
+
+
+    <!-- ========================================== -->
+    <!-- 5. SERVICES PAGE HTML                      -->
+    <!-- ========================================== -->
+    <section class="services-hero">
+        <img src="https://images.unsplash.com/photo-1600948836101-f9ffda59d250?q=80&w=1920&auto=format&fit=crop" alt="Premium Salon Services" class="services-hero-bg">
+        <div class="services-hero-overlay"></div>
+        <div class="services-hero-content">
+            <h1>Our Treatments</h1>
+            <p>Explore our comprehensive range of bespoke beauty, hair, and wellness therapies tailored exclusively for you.</p>
+        </div>
+    </section>
+
+    <section class="section-padding" style="background-color: #fff;">
+        
+        <div class="service-row" id="hair">
+            <div class="service-image">
+                <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?q=80&w=800&auto=format&fit=crop" alt="Hair Care and Styling">
+            </div>
+            <div class="service-content">
+                <h2>Hair Artistry & Care</h2>
+                <p>Your hair is your best accessory. Our master stylists use advanced techniques and world-class products like L'Oréal and Olaplex to create looks that complement your face shape and lifestyle.</p>
+                
+                <ul class="sub-services-list">
+                    <li>
+                        <h4>Precision Cutting & Styling</h4>
+                        <p>From classic bobs to trendy layers, we craft styles that are easy to maintain and visually stunning.</p>
+                    </li>
+                    <li>
+                        <h4>Advanced Coloring & Balayage</h4>
+                        <p>Bespoke color formulas tailored to your skin tone, featuring damage-free highlighting and root-touchups.</p>
+                    </li>
+                    <li>
+                        <h4>Keratin & Botox Treatments</h4>
+                        <p>Frizz-taming, intensive smoothing therapies that restore natural shine and repair damaged cuticles.</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="service-row reverse" id="makeup">
+            <div class="service-image">
+                <img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?q=80&w=800&auto=format&fit=crop" alt="Bridal and HD Makeup">
+            </div>
+            <div class="service-content">
+                <h2>Bridal Studio & Makeup</h2>
+                <p>Your big day deserves perfection. Our certified makeup artists specialize in creating flawless, long-lasting looks that look spectacular in person and on camera.</p>
+                
+                <ul class="sub-services-list">
+                    <li>
+                        <h4>High-Definition (HD) Makeup</h4>
+                        <p>Using premium brands like MAC, Huda Beauty, and Bobbi Brown, we create a natural, unblemished finish that lasts all day.</p>
+                    </li>
+                    <li>
+                        <h4>Airbrush Artistry</h4>
+                        <p>A lightweight, silicone-based makeup sprayed softly onto the skin for a sweat-proof, tear-proof, and completely flawless canvas.</p>
+                    </li>
+                    <li>
+                        <h4>Pre-Bridal Packages</h4>
+                        <p>Months of preparation condensed into relaxing sessions including full-body polishing, skin brightening, and hair nourishment.</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="service-row" id="skincare">
+            <div class="service-image">
+                <img src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?q=80&w=800&auto=format&fit=crop" alt="Skincare and Facial Treatments">
+            </div>
+            <div class="service-content">
+                <h2>Advanced Skincare</h2>
+                <p>Radiant skin starts with healthy habits and professional care. We offer dermatologically tested treatments targeting everything from acne to anti-aging.</p>
+                
+                <ul class="sub-services-list">
+                    <li>
+                        <h4>HydraGlow Deep Cleanse</h4>
+                        <p>A multi-step treatment that cleanses, exfoliates, and extracts impurities while infusing skin with hydrating serums.</p>
+                    </li>
+                    <li>
+                        <h4>Anti-Aging & Lifting Therapies</h4>
+                        <p>Collagen-boosting facials designed to tighten the skin, reduce fine lines, and restore a youthful plumpness.</p>
+                    </li>
+                    <li>
+                        <h4>De-Tan & Pigmentation Care</h4>
+                        <p>Gentle yet effective treatments using Vitamin C and natural fruit extracts to even out skin tone and remove sun damage.</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="service-row reverse" id="spa">
+            <div class="service-image">
+                <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=800&auto=format&fit=crop" alt="Luxury Spa and Massage">
+            </div>
+            <div class="service-content">
+                <h2>Luxury Spa & Wellness</h2>
+                <p>Step away from the hustle of the city into our serene sanctuary. Our holistic therapies are designed to relax your mind, ease muscle tension, and rejuvenate your spirit.</p>
+                
+                <ul class="sub-services-list">
+                    <li>
+                        <h4>Swedish & Deep Tissue Massage</h4>
+                        <p>Choose between gentle, relaxing strokes to improve circulation or intense pressure to relieve chronic muscle knots.</p>
+                    </li>
+                    <li>
+                        <h4>Aromatherapy Retreat</h4>
+                        <p>A sensory experience using customized blends of warm essential oils to balance your energy and reduce stress.</p>
+                    </li>
+                    <li>
+                        <h4>Body Polishing & Wraps</h4>
+                        <p>Full-body exfoliation using organic sea salts, followed by hydrating wraps that leave your skin feeling like silk.</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="service-row" id="nails">
+            <div class="service-image">
+                <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?q=80&w=800&auto=format&fit=crop">
+            </div>
+            <div class="service-content">
+                <h2>Nail Bar & Essentials</h2>
+                <p>Pamper your hands and feet. Our dedicated nail technicians ensure absolute hygiene while delivering stunning nail art and relaxing manicures.</p>
+                
+                <ul class="sub-services-list">
+                    <li>
+                        <h4>Gel & Acrylic Extensions</h4>
+                        <p>Strong, durable, and beautifully shaped extensions giving you the perfect length and flawless finish.</p>
+                    </li>
+                    <li>
+                        <h4>Custom Nail Art</h4>
+                        <p>From minimalist French tips to intricate 3D designs, chrome, and ombre—if you can imagine it, we can create it.</p>
+                    </li>
+                    <li>
+                        <h4>Luxury Spa Pedi & Mani</h4>
+                        <p>Includes dead sea salt soaks, cuticle care, deep exfoliation, and an extended massage to relieve tired hands and feet.</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </section>
+
+    <section class="services-cta">
+        <h2>Experience The Difference</h2>
+        <p>Every treatment at Branded Salon is a step towards feeling more confident and refreshed. View our pricing or book your slot today.</p>
+        <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+            <a href="pricing.html" class="cta-btn" style="background: transparent; border-color: #fff; color: #fff;">View Pricing Menu</a>
+            <a href="appointments.html" class="cta-btn">Book An Appointment</a>
+        </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 6. FOOTER HTML                             -->
+    <!-- ========================================== -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <a href="index.html" class="footer-logo">Branded<span>Salon</span></a>
+                <p>Experience true beauty and luxury. We offer premium hair styling, flawless makeup, and relaxing spa treatments tailored just for you.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Instagram">IG</a>
+                    <a href="#" aria-label="Facebook">FB</a>
+                    <a href="#" aria-label="Twitter">TW</a>
+                    <a href="#" aria-label="YouTube">YT</a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html">Our Services</a></li>
+                    <li><a href="gallery.html">Portfolio & Gallery</a></li>
+                    <li><a href="pricing.html">Pricing Menu</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Legal & Policies</h4>
+                <ul class="footer-links">
+                    <li><a href="booking-policy.html">Booking & Cancellation</a></li>
+                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    <li><a href="refund-policy.html">Refund & Return Policy</a></li>
+                    <li><a href="etiquette-health.html">Etiquette & Health</a></li>
+                    <li><a href="terms.html">Terms & Conditions</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Get In Touch</h4>
+                <ul class="footer-contact footer-links">
+                    <li><span>📍</span> Premium Arcade, Civil Lines<br>Kanpur, Uttar Pradesh 208001</li>
+                    <li><span>📞</span> <a href="tel:+919876543210">+91 98765 43210</a></li>
+                    <li><span>📧</span> <a href="mailto:hello@brandedsalon.com">hello@brandedsalon.com</a></li>
+                    <li><span>🕒</span> Mon - Sun: 10:00 AM - 9:00 PM</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Branded Salon. All Rights Reserved. Designed & Developed by Novaplexes.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

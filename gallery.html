@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio & Lookbook - Branded Salon</title>
+        <!-- Favicon -->
+<link rel="icon" href="salon-logo.jpeg" type="image/jpeg" sizes="1254x1254">
+
+    <!-- ========================================== -->
+    <!-- 1. HEADER KI CSS                           -->
+    <!-- ========================================== -->
+    <style>
+        /* Reset & Fonts (Header Ke Liye) */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Main Header Container */
+        .main-header {
+            background-color: #1a1a1a; /* Dark Charcoal Theme */
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Logo Styling */
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: #c5a059; /* Gold Theme */
+            text-decoration: none;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: #fff; /* "Salon" word in white */
+        }
+
+        /* Navigation Links */
+        .nav-links {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .nav-links li a {
+            color: #fff;
+            text-decoration: none;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            font-size: 1.05rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links li a:hover {
+            color: #c5a059;
+        }
+
+        /* Header Call to Action Button */
+        .header-cta {
+            background-color: #c5a059;
+            color: #fff;
+            padding: 10px 25px;
+            text-decoration: none;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            font-weight: 600;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+            border: 1px solid #c5a059;
+        }
+
+        .header-cta:hover {
+            background-color: transparent;
+            color: #c5a059;
+        }
+
+        /* Mobile Menu Toggle (Hamburger Icon) */
+        .mobile-menu-toggle {
+            display: none;
+            color: #fff;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 992px) {
+            .header-cta {
+                display: none; /* Hide CTA button on small screens to save space */
+            }
+            
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                display: none; /* Hide links by default on mobile */
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: #1a1a1a;
+                padding: 20px 0;
+                border-top: 1px solid #333;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            }
+
+            .nav-links.active {
+                display: flex; /* Show links when hamburger is clicked */
+            }
+
+            .nav-links li {
+                width: 100%;
+                text-align: center;
+                margin-bottom: 15px;
+            }
+
+            .nav-links li:last-child {
+                margin-bottom: 0;
+            }
+
+            /* Mobile specific Book Now link */
+            .nav-links li.mobile-cta a {
+                color: #c5a059;
+                font-weight: bold;
+            }
+        }
+    </style>
+
+    <!-- ========================================== -->
+    <!-- 2. GALLERY / LOOKBOOK PAGE KI CSS          -->
+    <!-- ========================================== -->
+    <style>
+        /* Reset & Basic Typography */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Playfair Display', 'Segoe UI', serif; 
+        }
+        
+        body {
+            background-color: #faf9f7;
+            color: #333;
+            line-height: 1.7;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif; 
+            color: #1a1a1a;
+        }
+
+        .section-padding {
+            padding: 80px 10%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            color: #777;
+            margin-bottom: 50px;
+            font-size: 1.1rem;
+            font-style: italic;
+        }
+
+        .cta-btn {
+            padding: 15px 35px;
+            background-color: #c5a059; 
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+            display: inline-block;
+            border: 1px solid #c5a059;
+            cursor: pointer;
+        }
+
+        .cta-btn:hover {
+            background-color: #1a1a1a;
+            border-color: #1a1a1a;
+            color: #c5a059;
+        }
+
+        /* 1. Gallery Hero Section */
+        .gallery-hero {
+            position: relative;
+            height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            padding: 0 20px;
+            overflow: hidden;
+        }
+
+        .gallery-hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2;
+        }
+
+        .gallery-hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: -1;
+        }
+
+        .gallery-hero-content { z-index: 1; }
+        .gallery-hero-content h1 { font-size: 4rem; color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
+        .gallery-hero-content p { font-size: 1.2rem; font-weight: 300; letter-spacing: 1px; }
+
+        /* 2. Gallery Grid Layout */
+        .gallery-category {
+            margin-bottom: 80px;
+        }
+
+        .gallery-category-title {
+            font-size: 2rem;
+            color: #1a1a1a;
+            margin-bottom: 30px;
+            border-left: 4px solid #c5a059;
+            padding-left: 15px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            height: 350px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        /* Hover Overlay Effect */
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(26, 26, 26, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .gallery-overlay h3 {
+            color: #fff;
+            font-size: 1.5rem;
+            transform: translateY(20px);
+            transition: transform 0.4s ease;
+            font-family: 'Playfair Display', serif;
+            text-align: center;
+            padding: 0 15px;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-item:hover .gallery-overlay h3 {
+            transform: translateY(0);
+        }
+
+        /* 3. Call to Action Banner */
+        .gallery-cta {
+            background-color: #1a1a1a;
+            text-align: center;
+            padding: 80px 20px;
+            color: #fff;
+        }
+
+        .gallery-cta h2 { color: #fff; font-size: 2.5rem; margin-bottom: 15px; }
+        .gallery-cta p { font-size: 1.1rem; margin-bottom: 30px; color: #ccc; max-width: 600px; margin-left: auto; margin-right: auto; }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .gallery-hero-content h1 { font-size: 3rem; }
+            .gallery-item { height: 280px; }
+        }
+    </style>
+
+    <!-- ========================================== -->
+    <!-- 3. FOOTER KI CSS                           -->
+    <!-- ========================================== -->
+    <style>
+        .main-footer {
+            background-color: #111;
+            color: #ddd;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            padding: 70px 10% 20px;
+            border-top: 3px solid #c5a059;
+        }
+
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            justify-content: space-between;
+            margin-bottom: 50px;
+        }
+
+        .footer-col { flex: 1; min-width: 200px; }
+
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: #c5a059;
+            text-decoration: none;
+            font-weight: 700;
+            letter-spacing: 1px;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .footer-logo span { color: #fff; }
+
+        .footer-col p { font-size: 0.95rem; line-height: 1.6; color: #aaa; margin-bottom: 20px; }
+
+        .social-links { display: flex; gap: 15px; }
+
+        .social-links a {
+            display: inline-block;
+            width: 35px;
+            height: 35px;
+            background-color: #222;
+            color: #c5a059;
+            text-align: center;
+            line-height: 35px;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover { background-color: #c5a059; color: #fff; }
+
+        .footer-col h4 {
+            color: #fff;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 8px;
+        }
+
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background-color: #c5a059;
+        }
+
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links li a {
+            color: #aaa;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s ease, padding-left 0.3s ease;
+        }
+        .footer-links li a:hover { color: #c5a059; padding-left: 5px; }
+
+        .footer-contact li { display: flex; gap: 10px; margin-bottom: 15px; color: #aaa; font-size: 0.95rem; line-height: 1.5; }
+        .footer-contact li span { color: #c5a059; font-size: 1.1rem; }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            color: #777;
+            font-size: 0.9rem;
+        }
+
+        .footer-bottom a { color: #c5a059; text-decoration: none; }
+
+        @media (max-width: 768px) {
+            .footer-container { flex-direction: column; gap: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========================================== -->
+    <!-- 4. HEADER HTML                             -->
+    <!-- ========================================== -->
+    <header class="main-header">
+        <a href="index.html" class="logo">Branded<span>Salon</span></a>
+        <ul class="nav-links" id="navMenu">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="gallery.html">Lookbook</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="contact.html">Contact</a></li>
+
+        </ul>
+        <a href="appointments.html" class="header-cta">Book Now</a>
+        <div class="mobile-menu-toggle" onclick="toggleMenu()">☰</div>
+    </header>
+
+    <script>
+        function toggleMenu() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('active');
+        }
+    </script>
+
+
+    <!-- ========================================== -->
+    <!-- 5. GALLERY PAGE HTML                       -->
+    <!-- ========================================== -->
+    <section class="gallery-hero">
+        <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?q=80&w=1920&auto=format&fit=crop" alt="Branded Salon Portfolio" class="gallery-hero-bg">
+        <div class="gallery-hero-overlay"></div>
+        <div class="gallery-hero-content">
+            <h1>Our Portfolio</h1>
+            <p>A glimpse into the artistry, transformations, and luxury we create every day.</p>
+        </div>
+    </section>
+
+    <section class="section-padding">
+        
+        <h2 class="section-title">Lookbook</h2>
+        <p class="section-subtitle">Real clients, real transformations.</p>
+
+        <!-- Category 1: Hair Transformations -->
+        <div class="gallery-category">
+            <h2 class="gallery-category-title">Hair Styling & Color</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1617897903246-719242758050?q=80&w=800&auto=format&fit=crop" alt="Balayage Hair Color">
+                    <div class="gallery-overlay">
+                        <h3>Golden Balayage</h3>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?q=80&w=800&auto=format&fit=crop" alt="Precision Haircut">
+                    <div class="gallery-overlay">
+                        <h3>Precision Bob Cut</h3>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?q=80&w=800&auto=format&fit=crop" alt="Bridal Hair Styling">
+                    <div class="gallery-overlay">
+                        <h3>Elegant Updo</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Category 2: Bridal & Makeup -->
+        <div class="gallery-category">
+            <h2 class="gallery-category-title">Bridal & HD Makeup</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?q=80&w=800&auto=format&fit=crop" alt="HD Bridal Makeup">
+                    <div class="gallery-overlay">
+                        <h3>HD Bridal Glam</h3>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?q=80&w=800&auto=format&fit=crop" alt="Party Makeup">
+                    <div class="gallery-overlay">
+                        <h3>Soft Party Look</h3>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1526045612212-70caf35c14df?q=80&w=800&auto=format&fit=crop" alt="Airbrush Makeup">
+                    <div class="gallery-overlay">
+                        <h3>Airbrush Finish</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Category 3: Nail Art & Spa -->
+        <div class="gallery-category">
+            <h2 class="gallery-category-title">Nail Art & Spa</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?q=80&w=800&auto=format&fit=crop" alt="Premium Gel Nails">
+                    <div class="gallery-overlay">
+                        <h3>Premium Gel Extensions</h3>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1599305090598-fe179d501227?q=80&w=800&auto=format&fit=crop" alt="Custom Nail Art">
+                    <div class="gallery-overlay">
+                        <h3>Custom Nail Art</h3>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=800&auto=format&fit=crop" alt="Spa and Relaxation">
+                    <div class="gallery-overlay">
+                        <h3>Relaxing Spa Therapy</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Category 4: Our Salon Interior -->
+        <div class="gallery-category" style="margin-bottom: 0;">
+            <h2 class="gallery-category-title">Inside Branded Salon</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=800&auto=format&fit=crop" alt="Salon Reception">
+                    <div class="gallery-overlay">
+                        <h3>Luxury Reception</h3>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1600948836101-f9ffda59d250?q=80&w=800&auto=format&fit=crop" alt="Hair Wash Stations">
+                    <div class="gallery-overlay">
+                        <h3>Premium Wash Area</h3>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?q=80&w=800&auto=format&fit=crop" alt="Salon Styling Area">
+                    <div class="gallery-overlay">
+                        <h3>Expert Styling Stations</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- 3. Bottom CTA Banner -->
+    <section class="gallery-cta">
+        <h2>Inspired by Our Work?</h2>
+        <p>We would love to create a bespoke look just for you. Book your consultation and let our master stylists work their magic.</p>
+        <a href="appointments.html" class="cta-btn">Book Your Transformation</a>
+    </section>
+
+
+    <!-- ========================================== -->
+    <!-- 6. FOOTER HTML                             -->
+    <!-- ========================================== -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <a href="index.html" class="footer-logo">Branded<span>Salon</span></a>
+                <p>Experience true beauty and luxury. We offer premium hair styling, flawless makeup, and relaxing spa treatments tailored just for you.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Instagram">IG</a>
+                    <a href="#" aria-label="Facebook">FB</a>
+                    <a href="#" aria-label="Twitter">TW</a>
+                    <a href="#" aria-label="YouTube">YT</a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html">Our Services</a></li>
+                    <li><a href="gallery.html">Portfolio & Gallery</a></li>
+                    <li><a href="pricing.html">Pricing Menu</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Legal & Policies</h4>
+                <ul class="footer-links">
+                    <li><a href="booking-policy.html">Booking & Cancellation</a></li>
+                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    <li><a href="refund-policy.html">Refund & Return Policy</a></li>
+                    <li><a href="etiquette-health.html">Etiquette & Health</a></li>
+                    <li><a href="terms.html">Terms & Conditions</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Get In Touch</h4>
+                <ul class="footer-contact footer-links">
+                    <li><span>📍</span> Premium Arcade, Civil Lines<br>Kanpur, Uttar Pradesh 208001</li>
+                    <li><span>📞</span> <a href="tel:+919876543210">+91 98765 43210</a></li>
+                    <li><span>📧</span> <a href="mailto:hello@brandedsalon.com">hello@brandedsalon.com</a></li>
+                    <li><span>🕒</span> Mon - Sun: 10:00 AM - 9:00 PM</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Branded Salon. All Rights Reserved. Designed & Developed by Novaplexes.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

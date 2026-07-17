@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Appointment - Branded Salon</title>
+        <!-- Favicon -->
+<link rel="icon" href="salon-logo.jpeg" type="image/jpeg" sizes="1254x1254">
+
+    <!-- ========================================== -->
+    <!-- 1. HEADER KI CSS                           -->
+    <!-- ========================================== -->
+    <style>
+        /* Reset & Fonts (Header Ke Liye) */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Main Header Container */
+        .main-header {
+            background-color: #1a1a1a; /* Dark Charcoal Theme */
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Logo Styling */
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: #c5a059; /* Gold Theme */
+            text-decoration: none;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: #fff; /* "Salon" word in white */
+        }
+
+        /* Navigation Links */
+        .nav-links {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .nav-links li a {
+            color: #fff;
+            text-decoration: none;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            font-size: 1.05rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links li a:hover {
+            color: #c5a059;
+        }
+
+        /* Header Call to Action Button */
+        .header-cta {
+            background-color: #c5a059;
+            color: #fff;
+            padding: 10px 25px;
+            text-decoration: none;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            font-weight: 600;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+            border: 1px solid #c5a059;
+        }
+
+        .header-cta:hover {
+            background-color: transparent;
+            color: #c5a059;
+        }
+
+        /* Mobile Menu Toggle (Hamburger Icon) */
+        .mobile-menu-toggle {
+            display: none;
+            color: #fff;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 992px) {
+            .header-cta {
+                display: none; /* Hide CTA button on small screens to save space */
+            }
+            
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                display: none; /* Hide links by default on mobile */
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: #1a1a1a;
+                padding: 20px 0;
+                border-top: 1px solid #333;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            }
+
+            .nav-links.active {
+                display: flex; /* Show links when hamburger is clicked */
+            }
+
+            .nav-links li {
+                width: 100%;
+                text-align: center;
+                margin-bottom: 15px;
+            }
+
+            .nav-links li:last-child {
+                margin-bottom: 0;
+            }
+
+            /* Mobile specific Book Now link */
+            .nav-links li.mobile-cta a {
+                color: #c5a059;
+                font-weight: bold;
+            }
+        }
+    </style>
+
+    <!-- ========================================== -->
+    <!-- 2. APPOINTMENTS PAGE KI CSS                -->
+    <!-- ========================================== -->
+    <style>
+        /* Reset & Basic Typography */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Playfair Display', 'Segoe UI', serif; 
+        }
+        
+        body {
+            background-color: #faf9f7;
+            color: #333;
+            line-height: 1.7;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif; 
+            color: #1a1a1a;
+        }
+
+        .section-padding {
+            padding: 100px 10%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            color: #777;
+            margin-bottom: 60px;
+            font-size: 1.1rem;
+            font-style: italic;
+        }
+
+        .cta-btn {
+            padding: 15px 35px;
+            background-color: #c5a059; 
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+            display: inline-block;
+            border: 1px solid #c5a059;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .cta-btn:hover {
+            background-color: #1a1a1a;
+            border-color: #1a1a1a;
+            color: #c5a059;
+        }
+
+        /* 1. Appointments Hero Section */
+        .booking-hero {
+            position: relative;
+            height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            padding: 0 20px;
+            overflow: hidden;
+        }
+
+        .booking-hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2;
+        }
+
+        .booking-hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: -1;
+        }
+
+        .booking-hero-content { z-index: 1; }
+        .booking-hero-content h1 { font-size: 4rem; color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
+        .booking-hero-content p { font-size: 1.2rem; font-weight: 300; letter-spacing: 1px; }
+
+        /* 2. How it Works (Steps) */
+        .steps-section {
+            background-color: #fff;
+        }
+
+        .steps-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .step-box {
+            flex: 1;
+            min-width: 250px;
+            text-align: center;
+            padding: 40px 20px;
+            border-radius: 8px;
+            background: #faf9f7;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background-color: #c5a059;
+            color: #fff;
+            font-size: 1.5rem;
+            font-weight: bold;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .step-box h3 { font-size: 1.5rem; margin-bottom: 15px; }
+        .step-box p { color: #666; font-size: 1rem; }
+
+        /* 3. Booking Form Section */
+        .booking-form-section {
+            background-color: #faf9f7;
+        }
+
+        .booking-form-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 50px;
+            border-radius: 8px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+            border-top: 5px solid #1a1a1a;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 25px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+
+        .form-group {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #1a1a1a;
+            font-size: 0.95rem;
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            background-color: #fff;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: #c5a059;
+            box-shadow: 0 0 8px rgba(197, 160, 89, 0.2);
+        }
+
+        /* 4. Instagram / Services Note */
+        .services-note {
+            background-color: #1a1a1a;
+            color: #fff;
+            text-align: center;
+            padding: 60px 20px;
+            margin-top: -50px;
+        }
+
+        .services-note h3 { color: #c5a059; font-size: 2rem; margin-bottom: 15px; }
+        .services-note p { font-size: 1.1rem; color: #ddd; max-width: 700px; margin: 0 auto; }
+        .services-note a { color: #c5a059; font-weight: bold; text-decoration: none; border-bottom: 1px solid #c5a059; }
+        .services-note a:hover { color: #fff; border-color: #fff; }
+
+        /* 5. Policies Section */
+        .policies-section {
+            background-color: #fff;
+        }
+
+        .policies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .policy-card {
+            padding: 30px;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            background: #faf9f7;
+        }
+
+        .policy-card h4 {
+            font-size: 1.3rem;
+            color: #1a1a1a;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .policy-card p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .booking-hero-content h1 { font-size: 3rem; }
+            .booking-form-container { padding: 30px 20px; }
+        }
+    </style>
+
+    <!-- ========================================== -->
+    <!-- 3. FOOTER KI CSS                           -->
+    <!-- ========================================== -->
+    <style>
+        .main-footer {
+            background-color: #111;
+            color: #ddd;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            padding: 70px 10% 20px;
+            border-top: 3px solid #c5a059;
+        }
+
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            justify-content: space-between;
+            margin-bottom: 50px;
+        }
+
+        .footer-col { flex: 1; min-width: 200px; }
+
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: #c5a059;
+            text-decoration: none;
+            font-weight: 700;
+            letter-spacing: 1px;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .footer-logo span { color: #fff; }
+
+        .footer-col p { font-size: 0.95rem; line-height: 1.6; color: #aaa; margin-bottom: 20px; }
+
+        .social-links { display: flex; gap: 15px; }
+
+        .social-links a {
+            display: inline-block;
+            width: 35px;
+            height: 35px;
+            background-color: #222;
+            color: #c5a059;
+            text-align: center;
+            line-height: 35px;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover { background-color: #c5a059; color: #fff; }
+
+        .footer-col h4 {
+            color: #fff;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 8px;
+        }
+
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background-color: #c5a059;
+        }
+
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links li a {
+            color: #aaa;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s ease, padding-left 0.3s ease;
+        }
+        .footer-links li a:hover { color: #c5a059; padding-left: 5px; }
+
+        .footer-contact li { display: flex; gap: 10px; margin-bottom: 15px; color: #aaa; font-size: 0.95rem; line-height: 1.5; }
+        .footer-contact li span { color: #c5a059; font-size: 1.1rem; }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            color: #777;
+            font-size: 0.9rem;
+        }
+
+        .footer-bottom a { color: #c5a059; text-decoration: none; }
+
+        @media (max-width: 768px) {
+            .footer-container { flex-direction: column; gap: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========================================== -->
+    <!-- 4. HEADER HTML                             -->
+    <!-- ========================================== -->
+    <header class="main-header">
+        <a href="index.html" class="logo">Branded<span>Salon</span></a>
+        <ul class="nav-links" id="navMenu">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="gallery.html">Lookbook</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <a href="appointments.html" class="header-cta">Book Now</a>
+        <div class="mobile-menu-toggle" onclick="toggleMenu()">☰</div>
+    </header>
+
+    <script>
+        function toggleMenu() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('active');
+        }
+    </script>
+
+
+    <!-- ========================================== -->
+    <!-- 5. APPOINTMENTS PAGE HTML                  -->
+    <!-- ========================================== -->
+    <section class="booking-hero">
+        <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=1920&auto=format&fit=crop" alt="Salon Spa Booking" class="booking-hero-bg">
+        <div class="booking-hero-overlay"></div>
+        <div class="booking-hero-content">
+            <h1>Reserve Your Time</h1>
+            <p>Your journey to relaxation and elegance starts here.</p>
+        </div>
+    </section>
+
+    <section class="steps-section section-padding">
+        <h2 class="section-title">How To Book</h2>
+        <p class="section-subtitle">A seamless experience from start to finish</p>
+        
+        <div class="steps-container">
+            <div class="step-box">
+                <div class="step-number">1</div>
+                <h3>Choose Service</h3>
+                <p>Select the treatment or package you wish to experience from our premium menu.</p>
+            </div>
+            <div class="step-box">
+                <div class="step-number">2</div>
+                <h3>Pick Date & Time</h3>
+                <p>Find a convenient slot that fits perfectly into your schedule.</p>
+            </div>
+            <div class="step-box">
+                <div class="step-number">3</div>
+                <h3>Confirm & Relax</h3>
+                <p>Submit your details and we will securely lock in your appointment.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="booking-form-section section-padding">
+        <h2 class="section-title">Book an Appointment</h2>
+        <p class="section-subtitle">Fill in the details below. Our team will review and confirm your slot.</p>
+        
+        <div class="booking-form-container">
+            <form action="#" method="POST">
+                
+                <h3 style="margin-bottom: 20px; font-size: 1.5rem; color: #c5a059;">Personal Details</h3>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="fname">First Name</label>
+                        <input type="text" id="fname" name="fname" placeholder="Enter first name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lname">Last Name</label>
+                        <input type="text" id="lname" name="lname" placeholder="Enter last name" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="phone">Mobile Number</label>
+                        <input type="tel" id="phone" name="phone" placeholder="+91 xxxxx xxxxx" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="you@example.com" required>
+                    </div>
+                </div>
+
+                <h3 style="margin-bottom: 20px; margin-top: 20px; font-size: 1.5rem; color: #c5a059;">Appointment Details</h3>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="service">Select Category</label>
+                        <select id="service" name="service" required>
+                            <option value="" disabled selected>Choose a service...</option>
+                            <option value="haircut">Signature Haircut & Styling</option>
+                            <option value="color">Hair Coloring & Highlights</option>
+                            <option value="spa">Luxury Spa & Massage</option>
+                            <option value="facial">Advanced Facial Treatments</option>
+                            <option value="bridal">Bridal & HD Makeup</option>
+                            <option value="nails">Manicure & Pedicure</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="expert">Preferred Expert (Optional)</label>
+                        <select id="expert" name="expert">
+                            <option value="any" selected>Any Available Expert</option>
+                            <option value="sarah">Sarah Khan (Color Specialist)</option>
+                            <option value="riya">Riya Sharma (Makeup Artist)</option>
+                            <option value="aman">Aman Verma (Spa Therapist)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="date">Preferred Date</label>
+                        <input type="date" id="date" name="date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="time">Preferred Time</label>
+                        <input type="time" id="time" name="time" required>
+                    </div>
+                </div>
+
+                <div class="form-group" style="margin-bottom: 30px;">
+                    <label for="notes">Special Requests / Notes</label>
+                    <textarea id="notes" name="notes" rows="4" placeholder="Any specific requirements, allergies, or style preferences we should know about?"></textarea>
+                </div>
+
+                <button type="submit" class="cta-btn" style="width: 100%;">Confirm My Appointment</button>
+                <p style="text-align: center; margin-top: 15px; color: #777; font-size: 0.9rem;">
+                    *You will receive a confirmation email on your provided email address shortly after booking.
+                </p>
+            </form>
+        </div>
+    </section>
+
+    <section class="services-note">
+        <h3>Not Sure What to Book?</h3>
+        <p>If you're unsure which treatment is right for you, head over and check the link in our Instagram bio for a complete, detailed list of all the professional services we offer. We constantly update it with our latest packages!</p>
+    </section>
+
+    <section class="policies-section section-padding">
+        <h2 class="section-title">Booking Policies</h2>
+        <p class="section-subtitle">Please read our guidelines before your visit</p>
+        
+        <div class="policies-grid">
+            <div class="policy-card">
+                <h4>⏱️ Arrival Time</h4>
+                <p>Please aim to arrive 10-15 minutes before your scheduled appointment time. This gives you time to check in, enjoy a complimentary beverage, and start your relaxing experience without rushing.</p>
+            </div>
+            <div class="policy-card">
+                <h4>❌ Cancellations</h4>
+                <p>We understand that plans change. We kindly ask for at least 24 hours' notice if you need to cancel or reschedule your appointment. Late cancellations may be subject to a 50% service charge.</p>
+            </div>
+            <div class="policy-card">
+                <h4>🚶‍♀️ Walk-ins</h4>
+                <p>While we operate primarily by appointment to ensure every client gets our full attention, we do welcome walk-ins at our Kanpur branch based on daily availability.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 6. FOOTER HTML                             -->
+    <!-- ========================================== -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <a href="index.html" class="footer-logo">Branded<span>Salon</span></a>
+                <p>Experience true beauty and luxury. We offer premium hair styling, flawless makeup, and relaxing spa treatments tailored just for you.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Instagram">IG</a>
+                    <a href="#" aria-label="Facebook">FB</a>
+                    <a href="#" aria-label="Twitter">TW</a>
+                    <a href="#" aria-label="YouTube">YT</a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html">Our Services</a></li>
+                    <li><a href="gallery.html">Portfolio & Gallery</a></li>
+                    <li><a href="pricing.html">Pricing Menu</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Legal & Policies</h4>
+                <ul class="footer-links">
+                    <li><a href="booking-policy.html">Booking & Cancellation</a></li>
+                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    <li><a href="refund-policy.html">Refund & Return Policy</a></li>
+                    <li><a href="etiquette-health.html">Etiquette & Health</a></li>
+                    <li><a href="terms.html">Terms & Conditions</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Get In Touch</h4>
+                <ul class="footer-contact footer-links">
+                    <li><span>📍</span> Premium Arcade, Civil Lines<br>Kanpur, UP 208001</li>
+                    <li><span>📞</span> <a href="tel:+919876543210">+91 98765 43210</a></li>
+                    <li><span>📧</span> <a href="mailto:hello@brandedsalon.com">hello@brandedsalon.com</a></li>
+                    <li><span>🕒</span> Mon - Sun: 10:00 AM - 9:00 PM</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Branded Salon. All Rights Reserved. Designed & Developed by Novaplexes.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

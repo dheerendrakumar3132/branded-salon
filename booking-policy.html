@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking & Cancellation Policy - Branded Salon</title>
+        <!-- Favicon -->
+<link rel="icon" href="salon-logo.jpeg" type="image/jpeg" sizes="1254x1254">
+
+    <!-- ========================================== -->
+    <!-- 1. HEADER KI CSS                           -->
+    <!-- ========================================== -->
+    <style>
+        /* Reset & Fonts (Header Ke Liye) */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Main Header Container */
+        .main-header {
+            background-color: #1a1a1a; /* Dark Charcoal Theme */
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Logo Styling */
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: #c5a059; /* Gold Theme */
+            text-decoration: none;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: #fff; /* "Salon" word in white */
+        }
+
+        /* Navigation Links */
+        .nav-links {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .nav-links li a {
+            color: #fff;
+            text-decoration: none;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            font-size: 1.05rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links li a:hover {
+            color: #c5a059;
+        }
+
+        /* Header Call to Action Button */
+        .header-cta {
+            background-color: #c5a059;
+            color: #fff;
+            padding: 10px 25px;
+            text-decoration: none;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            font-weight: 600;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+            border: 1px solid #c5a059;
+        }
+
+        .header-cta:hover {
+            background-color: transparent;
+            color: #c5a059;
+        }
+
+        /* Mobile Menu Toggle (Hamburger Icon) */
+        .mobile-menu-toggle {
+            display: none;
+            color: #fff;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 992px) {
+            .header-cta {
+                display: none; /* Hide CTA button on small screens to save space */
+            }
+            
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                display: none; /* Hide links by default on mobile */
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: #1a1a1a;
+                padding: 20px 0;
+                border-top: 1px solid #333;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            }
+
+            .nav-links.active {
+                display: flex; /* Show links when hamburger is clicked */
+            }
+
+            .nav-links li {
+                width: 100%;
+                text-align: center;
+                margin-bottom: 15px;
+            }
+
+            .nav-links li:last-child {
+                margin-bottom: 0;
+            }
+
+            /* Mobile specific Book Now link */
+            .nav-links li.mobile-cta a {
+                color: #c5a059;
+                font-weight: bold;
+            }
+        }
+    </style>
+
+    <!-- ========================================== -->
+    <!-- 2. POLICY PAGE KI CSS                      -->
+    <!-- ========================================== -->
+    <style>
+        /* Reset & Basic Typography */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Playfair Display', 'Segoe UI', serif; 
+        }
+        
+        body {
+            background-color: #faf9f7;
+            color: #333;
+            line-height: 1.8;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif; 
+            color: #1a1a1a;
+        }
+
+        .section-padding {
+            padding: 80px 10%;
+        }
+
+        /* 1. Policy Hero Section */
+        .policy-hero {
+            position: relative;
+            height: 45vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            padding: 0 20px;
+            overflow: hidden;
+            background-color: #1a1a1a;
+        }
+
+        .policy-hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2;
+        }
+
+        .policy-hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8));
+            z-index: -1;
+        }
+
+        .policy-hero-content { z-index: 1; }
+        .policy-hero-content h1 { font-size: 3.5rem; color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
+        .policy-hero-content p { font-size: 1.2rem; font-weight: 300; letter-spacing: 1px; color: #ccc;}
+
+        /* 2. Policy Content Area */
+        .policy-container {
+            max-width: 900px;
+            margin: -60px auto 50px;
+            background: #fff;
+            padding: 60px 50px;
+            border-radius: 8px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+            position: relative;
+            z-index: 5;
+        }
+
+        .updated-date-badge {
+            display: inline-block;
+            background-color: #f0ece1;
+            color: #c5a059;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.95rem;
+            font-weight: bold;
+            margin-bottom: 30px;
+            border: 1px solid #e2dbce;
+        }
+
+        .policy-intro {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 40px;
+            line-height: 1.9;
+            text-align: justify;
+        }
+
+        .policy-section {
+            margin-bottom: 50px;
+        }
+
+        .policy-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .policy-section h2 {
+            font-size: 1.8rem;
+            color: #1a1a1a;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0ece1;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .policy-section h2 span {
+            color: #c5a059;
+            font-size: 1.5rem;
+        }
+
+        .policy-section p {
+            color: #555;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .policy-box {
+            background-color: #faf9f7;
+            padding: 25px;
+            border-left: 4px solid #c5a059;
+            margin-bottom: 20px;
+            border-radius: 0 5px 5px 0;
+        }
+
+        .policy-box h4 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #1a1a1a;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .policy-hero-content h1 { font-size: 2.5rem; }
+            .policy-container { padding: 40px 20px; margin-top: -30px; }
+        }
+    </style>
+
+    <!-- ========================================== -->
+    <!-- 3. FOOTER KI CSS                           -->
+    <!-- ========================================== -->
+    <style>
+        .main-footer {
+            background-color: #111;
+            color: #ddd;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            padding: 70px 10% 20px;
+            border-top: 3px solid #c5a059;
+        }
+
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            justify-content: space-between;
+            margin-bottom: 50px;
+        }
+
+        .footer-col { flex: 1; min-width: 200px; }
+
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: #c5a059;
+            text-decoration: none;
+            font-weight: 700;
+            letter-spacing: 1px;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .footer-logo span { color: #fff; }
+
+        .footer-col p { font-size: 0.95rem; line-height: 1.6; color: #aaa; margin-bottom: 20px; }
+
+        .social-links { display: flex; gap: 15px; }
+
+        .social-links a {
+            display: inline-block;
+            width: 35px;
+            height: 35px;
+            background-color: #222;
+            color: #c5a059;
+            text-align: center;
+            line-height: 35px;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover { background-color: #c5a059; color: #fff; }
+
+        .footer-col h4 {
+            color: #fff;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 8px;
+        }
+
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background-color: #c5a059;
+        }
+
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links li a {
+            color: #aaa;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s ease, padding-left 0.3s ease;
+        }
+        .footer-links li a:hover { color: #c5a059; padding-left: 5px; }
+
+        .footer-contact li { display: flex; gap: 10px; margin-bottom: 15px; color: #aaa; font-size: 0.95rem; line-height: 1.5; }
+        .footer-contact li span { color: #c5a059; font-size: 1.1rem; }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            color: #777;
+            font-size: 0.9rem;
+        }
+
+        .footer-bottom a { color: #c5a059; text-decoration: none; }
+
+        @media (max-width: 768px) {
+            .footer-container { flex-direction: column; gap: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========================================== -->
+    <!-- 4. HEADER HTML                             -->
+    <!-- ========================================== -->
+    <header class="main-header">
+        <a href="index.html" class="logo">Branded<span>Salon</span></a>
+        <ul class="nav-links" id="navMenu">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="gallery.html">Lookbook</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <a href="appointments.html" class="header-cta">Book Now</a>
+        <div class="mobile-menu-toggle" onclick="toggleMenu()">☰</div>
+    </header>
+
+    <script>
+        function toggleMenu() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('active');
+        }
+    </script>
+
+
+    <!-- ========================================== -->
+    <!-- 5. POLICY PAGE HTML                        -->
+    <!-- ========================================== -->
+    <section class="policy-hero">
+        <img src="https://images.unsplash.com/photo-1570172619644-defd821eb754?q=80&w=1920&auto=format&fit=crop" alt="Salon Booking Policies" class="policy-hero-bg">
+        <div class="policy-hero-overlay"></div>
+        <div class="policy-hero-content">
+            <h1>Booking & Cancellations</h1>
+            <p>Clear guidelines to ensure a smooth and premium experience for everyone.</p>
+        </div>
+    </section>
+
+    <section class="section-padding" style="padding-top: 0;">
+        <div class="policy-container">
+            
+            <div class="updated-date-badge">
+                📅 Last Updated: July 17, 2026
+            </div>
+
+            <p class="policy-intro">
+                At <strong>Branded Salon</strong>, we strive to provide the utmost professionalism and premium care to every client. When you book an appointment with us, that time is reserved exclusively for you. We kindly request that you review our booking and cancellation policies below to help us maintain a seamless schedule and respect the time of our expert stylists and other guests.
+            </p>
+
+            <div class="policy-section">
+                <h2><span>1.</span> Securing Your Appointment</h2>
+                <p>To ensure fairness and dedication to our scheduled clients, certain services require an advance deposit to secure your booking.</p>
+                
+                <div class="policy-box">
+                    <h4>Standard Appointments</h4>
+                    <p>For standard services (like haircuts, basic facials, and manicures), no advance deposit is required. However, a valid phone number and email address are mandatory to confirm the slot.</p>
+                </div>
+                
+                <div class="policy-box">
+                    <h4>Premium & Bridal Services</h4>
+                    <p>For chemical treatments (Keratin, Balayage), large spa packages, and Bridal Makeup, a <strong>50% non-refundable deposit</strong> is required at the time of booking. This amount will be credited toward your final bill on the day of your service.</p>
+                </div>
+            </div>
+
+            <div class="policy-section">
+                <h2><span>2.</span> Cancellation & Rescheduling</h2>
+                <p>We understand that unexpected events happen and plans change. If you need to cancel or reschedule your appointment, we respectfully ask that you follow our notice period guidelines.</p>
+                
+                <div class="policy-box">
+                    <h4>24-Hour Notice (Standard Services)</h4>
+                    <p>We require at least <strong>24 hours' notice</strong> to cancel or reschedule any standard appointment. Cancellations made with less than 24 hours' notice will incur a cancellation fee equal to 50% of the reserved service amount.</p>
+                </div>
+                
+                <div class="policy-box">
+                    <h4>48-Hour Notice (Bridal & Group Bookings)</h4>
+                    <p>For Bridal packages, large group bookings, or multi-service packages, we require at least <strong>48 hours' notice</strong>. If cancelled or rescheduled within 48 hours, the initial 50% deposit will be forfeited.</p>
+                </div>
+            </div>
+
+            <div class="policy-section">
+                <h2><span>3.</span> Late Arrival Policy</h2>
+                <p>Timeliness is crucial to providing you and the next client with the best possible service. Please aim to arrive 10 minutes before your scheduled time.</p>
+                <ul>
+                    <li><strong>Grace Period:</strong> We offer a strict <strong>15-minute grace period</strong> for late arrivals.</li>
+                    <li><strong>After 15 Minutes:</strong> If you arrive more than 15 minutes late, we may not be able to perform the full service. Your appointment may be shortened to avoid delaying the next client, but you will still be charged for the full service booked.</li>
+                    <li>In severe cases of delay, we may have to completely reschedule your appointment, and a cancellation fee will apply.</li>
+                </ul>
+            </div>
+
+            <div class="policy-section">
+                <h2><span>4.</span> No-Show Policy</h2>
+                <p>Clients who fail to show up for their scheduled appointment without contacting the salon ("No-Shows") severely impact our daily operations and our stylists' schedules.</p>
+                <p><strong>Consequences of a No-Show:</strong></p>
+                <ul>
+                    <li>You will be charged <strong>100% of the reserved service amount</strong>.</li>
+                    <li>Any advance deposit made will be completely forfeited.</li>
+                    <li>Clients with a history of no-shows will be required to pre-pay 100% of their service cost in advance for any future bookings.</li>
+                </ul>
+            </div>
+
+            <div class="policy-section">
+                <h2><span>5.</span> Refund Guidelines</h2>
+                <p>As a premium service provider, we invest our time and use high-quality products for your treatments.</p>
+                <ul>
+                    <li><strong>Services:</strong> We do not offer cash refunds on any services provided. If you are dissatisfied with your service, please inform us within 48 hours, and we will offer a complimentary correction session.</li>
+                    <li><strong>Deposits:</strong> All booking deposits for bridal and advanced chemical treatments are strictly non-refundable. They can, however, be transferred to a rescheduled date if the required 48-hour notice is provided.</li>
+                </ul>
+            </div>
+
+            <div style="text-align: center; margin-top: 50px;">
+                <p style="color: #666; font-style: italic; margin-bottom: 20px;">By booking an appointment with Branded Salon, you acknowledge that you have read and agreed to these terms.</p>
+                <a href="appointments.html" style="display: inline-block; padding: 15px 35px; background-color: #1a1a1a; color: #fff; text-decoration: none; font-weight: bold; border-radius: 3px; border: 1px solid #1a1a1a; transition: 0.3s;">Return to Booking</a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 6. FOOTER HTML                             -->
+    <!-- ========================================== -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <a href="index.html" class="footer-logo">Branded<span>Salon</span></a>
+                <p>Experience true beauty and luxury. We offer premium hair styling, flawless makeup, and relaxing spa treatments tailored just for you.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Instagram">IG</a>
+                    <a href="#" aria-label="Facebook">FB</a>
+                    <a href="#" aria-label="Twitter">TW</a>
+                    <a href="#" aria-label="YouTube">YT</a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html">Our Services</a></li>
+                    <li><a href="gallery.html">Portfolio & Gallery</a></li>
+                    <li><a href="pricing.html">Pricing Menu</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Legal & Policies</h4>
+                <ul class="footer-links">
+                    <li><a href="booking-policy.html">Booking & Cancellation</a></li>
+                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    <li><a href="refund-policy.html">Refund & Return Policy</a></li>
+                    <li><a href="etiquette-health.html">Etiquette & Health</a></li>
+                    <li><a href="terms.html">Terms & Conditions</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Get In Touch</h4>
+                <ul class="footer-contact footer-links">
+                    <li><span>📍</span> Premium Arcade, Civil Lines<br>Kanpur, UP 208001</li>
+                    <li><span>📞</span> <a href="tel:+919876543210">+91 98765 43210</a></li>
+                    <li><span>📧</span> <a href="mailto:hello@brandedsalon.com">hello@brandedsalon.com</a></li>
+                    <li><span>🕒</span> Mon - Sun: 10:00 AM - 9:00 PM</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Branded Salon. All Rights Reserved. Designed & Developed by Novaplexes.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
